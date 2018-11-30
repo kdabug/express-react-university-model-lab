@@ -2,6 +2,8 @@ const { Class, Student, Instructor } = require('./models');
 
 async function seed() {
   const students = await Student.bulkCreate([
+    // TODO: add 3+ seeds.
+    // E.G.:
     // {
     //   name: 'David',
     //   hometown: 'Arlington',
