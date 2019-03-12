@@ -9,46 +9,23 @@ const sequelize = new Sequelize({
   }
 });
 
-// async function testConnection() {
-//   try {
-//     await sequelize.authenticate()
-//     console.log('Connection has been established successfully');
-//   } catch (e) {
-//     console.error(e);
-//   } finally {
-//     process.exit();
-//   }
-// }
-//
-// testConnection();
-
 const Student = sequelize.define('student', {
   name: Sequelize.STRING,
   hometown: Sequelize.STRING,
   bio: Sequelize.TEXT
 });
 
-const Class = sequelize.define('class', {
-  name: Sequelize.STRING,
-  capacity: Sequelize.INTEGER,
-  start_date: Sequelize.DATEONLY,
-  end_date: Sequelize.DATEONLY
-});
-
 const Instructor = sequelize.define('instructor', {
   name: Sequelize.STRING,
   age: Sequelize.INTEGER,
-  favorite_color: Sequelize.STRING
+  favorite_subject: Sequelize.STRING
 });
 
-Student.belongsToMany(Class, { through: 'classes_students'});
-Class.belongsToMany(Student, { through: 'classes_students'});
-Instructor.hasMany(Class);
-Class.belongsTo(Instructor);
+Student.belongsTo(Instructor);
+Instructor.hasMany(Student, {onDelete: 'cascade'});
 
 module.exports = {
   sequelize,
   Student,
-  Class,
   Instructor
 };
