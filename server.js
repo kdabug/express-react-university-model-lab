@@ -32,10 +32,20 @@ app.get('/instructors', async (req, res) => {
   }
 })
 
+app.get('/students', async (req, res) => {
+  try {
+    const students = await Student.findAll();
+    res.json(students);
+  } catch(e) {
+    console.error(e);
+    res.status(500).json({ message: e.message});
+  }
+})
+
 app.post('/instructors', async (req, res) => {
   try {
     const instructor = await Instructor.create({
-      name: req.headers.name
+      ...req.body
     })
     res.json({instructor})
   } catch(e) {
