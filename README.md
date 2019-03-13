@@ -27,8 +27,9 @@ Look through the `seed.js` file, we have given you an example of how to write th
 ### Deliverables
 1. Take a looke at `models.js` and familiarize yourself with the Student and Instructor models and their relationship to each other.
 1. In the `seed.js` file, create at least four students and one instructor. After creating them, make sure to `set` the relationship between each student and their instructor. 
-1. In `server.js` initiate routes for the STUDENTS index route, show route, create route, update route, and delete route. For a bonus, feel free to set up CRUD routes for the Instructor model, too.
+1. In `server.js` initiate routes for the STUDENTS index route, show route, create route, and delete route. For a bonus, feel free to take a stab at an update route or try setting up CRUD routes for the Instructor model.
 1.  Hint: Student belong to instructors, so your five routes should use `/instructors/:id/students` and `/instructors/:instructor_id/students/:id` as base endpoints
+1.  Hint: For the `post` route, you'll need to use `await instructor.addStudents(student)` to establish the new student's instructor_id.
 1.  Please provide at least four logical commits when setting up the back-end and add comments where appropriate
 
 ************
@@ -45,7 +46,6 @@ Look through the `seed.js` file, we have given you an example of how to write th
 -  GET `/instructors/{id}/students`
 -  POST  `/instructors/{id}/students`
 -  GET `/instructors/{instructor_id}/students/{id}`
--  PUT `/instructors/{instructor_id}/students/{id}`
 -  DELETE `/instructors/{instructor_id}/students/{id}`
 3. Implement onChange and onSubmit handlers in the form
 5. Please provide at least four logical commits when setting up the front-end and add comments where appropriate.
