@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const logger = require('morgan');
 
 const { Student, Instructor } = require('./models');
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(cors());
 /**
  * TODO write route handelers for:
  * 0. Root Route: GET / (should just send a welcome message a JSON)
@@ -97,7 +99,7 @@ app.post('/instructors/:id/students', async (req, res) => {
     const id = req.params.id
     const instructor = await Instructor.findByPk(id)
     const student = await Student.create(req.body);
-    await instructor.setStudents(student)
+    await instructor.addStudents(student)
     res.json(student);
   } catch (e) {
     console.error(e);
