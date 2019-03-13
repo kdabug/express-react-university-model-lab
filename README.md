@@ -41,19 +41,6 @@ Look through the `seed.js` file, we have given you an example of how to write th
 - Check your package.json file to make sure you have all of the normal dependencies that we've been using for CRUD apps. Make sure you have cors set up!
 
 ### Deliverables
-1. Create a students list component that renders students fetched from the server.
-1. Write a student services file that makes axios requests with functions that make requests to:
--  GET `/instructors/{id}/students`
--  POST  `/instructors/{id}/students`
--  GET `/instructors/{instructor_id}/students/{id}`
--  DELETE `/instructors/{instructor_id}/students/{id}`
-3. Implement onChange and onSubmit handlers in the form
-5. Please provide at least four logical commits when setting up the front-end and add comments where appropriate.
-
-
-
-## Bonus:
-
 1. Style your app using CSS. This would be a great time to practice grid or flexbox!
 
 ![](https://media.giphy.com/media/yYSSBtDgbbRzq/giphy.gif)
