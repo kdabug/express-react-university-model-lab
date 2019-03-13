@@ -42,8 +42,8 @@ Look through the `seed.js` file, we have given you an example of how to write th
 ### Deliverables
 1. Create a students list component that renders students fetched from the server.
 1. Write a student services file that makes axios requests with functions that make requests to:
--  GET `/instructors/:id/students`
--  POST  `/instructors/:id/students`
+-  GET `/instructors/{id}/students`
+-  POST  `/instructors/{id}/students`
 -  GET `/instructors/{instructor_id}/students/{id}`
 -  PUT `/instructors/{instructor_id}/students/{id}`
 -  DELETE `/instructors/{instructor_id}/students/{id}`
