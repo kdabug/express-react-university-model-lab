@@ -8,13 +8,18 @@ async function seed() {
   // 2. Create 4 students
   // 3. Set the relationship between the students and their teacher
 
-  const instructor = await Instructor.create({
+  const instructorSir = await Instructor.create({
     name: "Sir",
     age: 78,
     favorite_subject: "water polo"
   });
+  const instructorMam = await Instructor.create({
+    name: "Mam",
+    age: 78,
+    favorite_subject: "playwriting"
+  });
 
-  const students = await Student.buldCreate([
+  const sirStudents = await Student.buldCreate([
     {
       name: "Alonso",
       hometown: "Naples",
@@ -40,7 +45,36 @@ async function seed() {
         "Is not like her father. Will not seek a pound of flesh. Chooses love over religious cultural norms."
     }
   ]);
-  await students.setInstructor(instructor);
+  const mamStudents = await Student.buldCreate([
+    {
+      name: "Dromio of Ephesus",
+      hometown: "Ephesus",
+      bio: "has a twin brother. but don't tell him he has a twin brother."
+    },
+    {
+      name: "Dromio of Syracuse",
+      hometown: "Syracuse",
+      bio: "has a twin brother. but don't tell him he has a twin brother."
+    },
+    {
+      name: "Soothsayer",
+      hometown: "None",
+      bio:
+        "Will tell you cryptic things that you will not want to hear - things you think you can best - but those things will happen."
+    },
+    {
+      name: "Snug",
+      hometown: "Athens",
+      bio:
+        "Plays the roles, allows people to believe he knows nothing. Maybe he really doesn't know much. Genuine nonetheless."
+    }
+  ]);
+  await sirStudents.setInstructor(instructorSir);
+  await mamStudents.setInstructor(instructorMam);
+  // await jessica.setInstructor(instructor);
+  // await thaisa.setInstructor(instructor);
+  // await cordelia.setInstructor(instructor);
+  // await alonso.setInstructor(instructor);
   process.exit();
 }
 
