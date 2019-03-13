@@ -9,7 +9,7 @@ Please read through all sections before beginning.
 *******
 
 # Back-end
-![](http://gph.is/29LFSgf)
+![] (http://gph.is/29LFSgf)
 
 ## Getting started on the back-end
 
