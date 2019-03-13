@@ -25,7 +25,8 @@ We have provided you starter code, inside of `models.js`, and a skeleton of `ser
 Look through the `seed.js` file, we have given you an example of how to write the data for Student. Write the data to insert into our three models.
 
 ### Deliverables
-1. In the `seed.js` file, create at least four students and one instructor. Make sure to establish the relationship between the students and the teacher using Sequelize's `await parent_variable.setParentModel(child_variable_name)`. You can look for examples in the sequelize documentation if you need help with associations: http://docs.sequelizejs.com/manual/tutorial/associations.html
+1. Take a looke at `models.js` and familiarize yourself with the Student and Instructor models and their relationship to each other.
+1. In the `seed.js` file, create at least four students and one instructor. After creating them, make sure to `set` the relationship between each student and their instructor. 
 1. In `server.js` initiate routes for the STUDENTS index route, show route, create route, update route, and delete route. For a bonus, feel free to set up CRUD routes for the Instructor model, too.
 1.  Hint: Student belong to instructors, so your five routes should use `/instructors/:id/students` and `/instructors/:instructor_id/students/:id` as base endpoints
 1.  Please provide at least four logical commits when setting up the back-end and add comments where appropriate
