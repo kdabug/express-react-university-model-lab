@@ -2,11 +2,14 @@
 
 #### For this assignment, you will be building out the back-end followed by the front-end, using Express and React, respectively.
 
-Review the repositories we did in class for references on creating your routes.
+Review the repositories of similar full stack CRUD apps we did in class for references on creating your routes.
 
-Please read through all sections before begininng.
+Please read through all sections before beginning.
 
 *******
+
+# Back-end
+![](http://gph.is/29LFSgf)
 
 ## Getting started on the back-end
 
