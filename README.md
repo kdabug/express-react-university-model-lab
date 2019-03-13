@@ -56,5 +56,5 @@ Look through the `seed.js` file, we have given you an example of how to write th
 
 1. Style your app using CSS. This would be a great time to practice grid or flexbox!
 
-![](https://media.giphy.com/media/3orieYvLZXsgTkOHza/giphy.gif)
+![](https://media.giphy.com/media/yYSSBtDgbbRzq/giphy.gif)
 
