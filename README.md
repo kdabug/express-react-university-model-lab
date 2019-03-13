@@ -8,10 +8,9 @@ Please read through all sections before beginning.
 
 *******
 
-# Back-end
-![](https://media.giphy.com/media/3o6ZtpWvwnhf34Oj0A/giphy.gif)
-
 ## Getting started on the back-end
+
+![](https://media.giphy.com/media/3o6ZtpWvwnhf34Oj0A/giphy.gif)
 
 - Clone down this repo and `cd` into it
 - Run `createdb school_db`
