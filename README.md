@@ -9,7 +9,7 @@ Please read through all sections before beginning.
 *******
 
 # Back-end
-![] (http://gph.is/29LFSgf)
+![](https://media.giphy.com/media/3o6ZtpWvwnhf34Oj0A/giphy.gif)
 
 ## Getting started on the back-end
 
