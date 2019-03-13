@@ -47,7 +47,7 @@ app.post("/instructors/:id/students", async (req, res) => {
     });
     const id = req.params.id;
     const instructor = await Instructor.findByPk(id);
-    await student.setInstructor(instructor);
+    await instructor.addStudents(student);
     res.json({ student });
   } catch (e) {
     console.error(e);
