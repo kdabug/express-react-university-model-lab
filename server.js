@@ -53,7 +53,9 @@ app.get("/instructors/:id/students", async (req, res) => {
 app.post("/instructors/:id/students", async (req, res) => {
   try {
     const student = await Student.create({
-      name: req.body.name
+      name: req.body.name,
+      hometown: req.body.hometown,
+      bio: req.body.bio
     });
     const id = req.params.id;
     const instructor = await Instructor.findByPk(id);
