@@ -56,8 +56,8 @@ class App extends Component {
       bio,
       instructor_id: selectInstructor
     });
-    // console.log("response handleUp", typeof resp.data);
-    const updatedStudent = resp.data.updateStudent;
+    console.log("response handleUp", resp.data);
+    const updatedStudent = resp.data.updatedStudent;
     this.setState(prevState => {
       const students = prevState.students.map(student => {
         if (student.id === updatedStudent.id) {
