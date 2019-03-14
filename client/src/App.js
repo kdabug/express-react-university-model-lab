@@ -5,6 +5,7 @@ import "./App.css";
 import axios from "axios";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
+import InstructorList from "./components/InstructorList";
 
 const BASE_URL = "http://localhost:3002";
 
@@ -152,6 +153,7 @@ class App extends Component {
         {/* TODO: create a StudentsList component that renders all students fetched from server */}
         <Link to="/">Home</Link>
         <Link to="/students">Students</Link>
+        <Link to="/instructors">Instructors</Link>
 
         <Route
           exact
@@ -173,6 +175,18 @@ class App extends Component {
           path="/students"
           render={() => (
             <StudentList
+              editStudent={this.editStudent}
+              students={this.state.students}
+              handleDelete={this.handleDelete}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/instructors"
+          render={() => (
+            <InstructorList
+              instructors={this.state.instructors}
               editStudent={this.editStudent}
               students={this.state.students}
               handleDelete={this.handleDelete}
