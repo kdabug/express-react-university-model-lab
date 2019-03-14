@@ -4,7 +4,7 @@ const logger = require("morgan");
 const cors = require("cors");
 
 const { Student, Instructor } = require("./models");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const app = express();
 
@@ -16,6 +16,16 @@ app.use(cors());
 // GET / (should just respond with a welcome message)
 app.get("/", (req, res) => {
   res.send(`Welcome to students app.`);
+});
+
+// GET ALL INSTRUCTORS /instructors
+app.get("/instructors", async (req, res) => {
+  try {
+    const instructors = await Instructor.findAll();
+    res.json(instructors);
+  } catch (e) {
+    console.error(e);
+  }
 });
 
 // GET ALL INSTRUCTORS /instructors

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import { withRouter } from 'react-router';
-import './App.css';
-import axios from 'axios';
-import StudentForm from './components/StudentForm';
-import StudentList from './components/StudentList';
+import { withRouter } from "react-router";
+import "./App.css";
+import axios from "axios";
+import StudentForm from "./components/StudentForm";
+import StudentList from "./components/StudentList";
 
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = "http://localhost:3002";
 
 class App extends Component {
   constructor(props) {
@@ -15,12 +15,12 @@ class App extends Component {
       students: [],
       instructors: [],
       formData: {
-        name: '',
-        hometown: '',
-        selectInstructor: '',
-        bio: ''
+        name: "",
+        hometown: "",
+        selectInstructor: "",
+        bio: ""
       }
-    }
+    };
     this.handleDelete = this.handleDelete.bind(this);
     this.editStudent = this.editStudent.bind(this);
   }
@@ -36,18 +36,13 @@ class App extends Component {
       }
     });
 
-    this.props.history.push(`/students/edit/${student.id}`)
+    this.props.history.push(`/students/edit/${student.id}`);
   }
 
   async handleUpdate(id, ev) {
     ev.preventDefault();
-    console.log('called: ', id);
-    const {
-      name,
-      hometown,
-      bio,
-      selectInstructor
-    } = this.state.formData;
+    console.log("called: ", id);
+    const { name, hometown, bio, selectInstructor } = this.state.formData;
     const url = `${BASE_URL}/instructors/${selectInstructor}/students/${id}`;
     const resp = await axios.put(url, {
       name,
@@ -58,30 +53,30 @@ class App extends Component {
     const updatedStudent = resp.data.updateStudent;
     this.setState(prevState => {
       const students = prevState.students.map(student => {
-        if (student.id === updatedStudent.id ) {
+        if (student.id === updatedStudent.id) {
           return updatedStudent;
         } else {
           return student;
         }
-      })
+      });
 
       return {
         students,
         formData: {
-          name: '',
-          hometown: '',
+          name: "",
+          hometown: "",
           selectInstructor: prevState.instructors[0].id,
-          bio: ''
+          bio: ""
         }
-      }
+      };
     });
-    this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   async componentDidMount() {
     await this.fetchInstructors();
     await this.getAllStudents();
-  };
+  }
 
   async fetchInstructors() {
     const resp = await axios(`${BASE_URL}/instructors`);
@@ -97,12 +92,12 @@ class App extends Component {
 
   //Write an async function to getAllStudents()
   async getAllStudents() {
-    const resp = await axios(`${BASE_URL}/students`)
+    const resp = await axios(`${BASE_URL}/students`);
     const students = resp.data;
     this.setState({
       students
-    })
-  };
+    });
+  }
 
   async createStudent(studentData) {
     const instructor_id = studentData.selectInstructor;
@@ -112,38 +107,43 @@ class App extends Component {
     this.setState(prevState => ({
       students: [...prevState.students, student],
       formData: {
-        name: '',
-        hometown: '',
-        instructor:  '',
-        bio: ''
+        name: "",
+        hometown: "",
+        instructor: "",
+        bio: ""
       }
-    }))
+    }));
   }
 
-  handleChange = async (e) => {
+  handleChange = async e => {
     const { name, value } = e.target;
     await this.setState(prevState => ({
       formData: {
         ...prevState.formData,
         [name]: value
       }
-    }))
+    }));
   };
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     console.log(this.state.formData);
-    await this.createStudent({...this.state.formData, instructor_id: this.state.formData.selectInstructor});
+    await this.createStudent({
+      ...this.state.formData,
+      instructor_id: this.state.formData.selectInstructor
+    });
   };
 
   async handleDelete(student) {
     console.log(`Deleting student with an id of ${id}`);
     const { id, instructor_id } = student;
-    await axios.delete(`${BASE_URL}/instructors/${instructor_id}/students/${id}`);
+    await axios.delete(
+      `${BASE_URL}/instructors/${instructor_id}/students/${id}`
+    );
     this.setState(prevState => ({
       students: prevState.students.filter(student => student.id !== id)
-    }))
-  };
+    }));
+  }
 
   render() {
     return (
@@ -153,7 +153,10 @@ class App extends Component {
         <Link to="/">Home</Link>
         <Link to="/students">Students</Link>
 
-        <Route exact path="/" render={() =>
+        <Route
+          exact
+          path="/"
+          render={() => (
             <StudentForm
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
@@ -162,14 +165,19 @@ class App extends Component {
               instructors={this.state.instructors}
               selectInstructor={this.state.formData.instructor}
               bio={this.state.formData.bio}
-            />}
+            />
+          )}
         />
-        <Route exact path="/students" render={() =>
+        <Route
+          exact
+          path="/students"
+          render={() => (
             <StudentList
               editStudent={this.editStudent}
               students={this.state.students}
               handleDelete={this.handleDelete}
-            />}
+            />
+          )}
         />
       </div>
     );
