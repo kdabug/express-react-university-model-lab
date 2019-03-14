@@ -22,6 +22,9 @@ function StudentList(props) {
             <button onClick={() => props.handleDelete(student)}>
               Delete Student
             </button>
+            <button onClick={() => props.editStudent(student)}>
+              Edit Student
+            </button>
           </ul>
         </div>
       ))}
