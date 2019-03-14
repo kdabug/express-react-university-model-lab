@@ -24,6 +24,7 @@ class App extends Component {
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.editStudent = this.editStudent.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   editStudent(student) {
@@ -183,10 +184,30 @@ class App extends Component {
         />
         <Route
           exact
-          path="/instructors"
+          path="/students/edit/:id"
           render={() => (
-            <InstructorList
+            <StudentForm
+              onChange={this.handleChange}
+              onSubmit={this.handleUpdate}
+              name={this.state.formData.name}
+              hometown={this.state.formData.hometown}
               instructors={this.state.instructors}
+              selectInstructor={this.state.formData.instructor}
+              bio={this.state.formData.bio}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/instructors"
+          render={() => <InstructorList instructors={this.state.instructors} />}
+        />
+        <Route
+          exact
+          path="/instructors/:id/students"
+          render={props => (
+            <StudentList
+              {...props}
               editStudent={this.editStudent}
               students={this.state.students}
               handleDelete={this.handleDelete}

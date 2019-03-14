@@ -1,6 +1,7 @@
 import React from "react";
-
+import { withRouter } from "react-router-dom";
 function InstructorList(props) {
+  //console.log('PROPS.INSTRUCTOR: INSTRUCTORLIST ->', props.instructors);
   return (
     <div>
       <h3>Instructor List</h3>
@@ -24,4 +25,4 @@ function InstructorList(props) {
   );
 }
 
-export default InstructorList;
+export default withRouter(InstructorList);
