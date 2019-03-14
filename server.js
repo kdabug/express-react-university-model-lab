@@ -28,11 +28,11 @@ app.get("/instructors", async (req, res) => {
   }
 });
 
-// GET ALL INSTRUCTORS /instructors
-app.get("/instructors", async (req, res) => {
+// GET ALL STUDENTS /instructors
+app.get("/students", async (req, res) => {
   try {
-    const instructors = await Instructor.findAll();
-    res.json(instructors);
+    const students = await Student.findAll();
+    res.json(students);
   } catch (e) {
     console.error(e);
   }
