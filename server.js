@@ -99,7 +99,8 @@ app.delete("/instructors/:instructor_id/students/:id", async (req, res) => {
 app.put("/instructors/:instructor_id/students/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const student = await student.findByPk(id);
+    console.log("put id", id);
+    const student = await Student.findByPk(id);
     const updatedStudent = await student.update(req.body);
     console.log("UPDATED Student: ", updatedStudent);
     res.json({

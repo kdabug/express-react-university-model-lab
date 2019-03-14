@@ -25,6 +25,7 @@ class App extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.editStudent = this.editStudent.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   editStudent(student) {
@@ -41,9 +42,12 @@ class App extends Component {
     this.props.history.push(`/students/edit/${student.id}`);
   }
 
-  async handleUpdate(id, ev) {
+  async handleUpdate(ev) {
     ev.preventDefault();
-    console.log("called: ", id);
+    console.log("called: ", this.props.location.pathname.split("/"));
+    const pathArray = this.props.location.pathname.split("/");
+    const id = pathArray[pathArray.length - 1];
+    console.log("id", id);
     const { name, hometown, bio, selectInstructor } = this.state.formData;
     const url = `${BASE_URL}/instructors/${selectInstructor}/students/${id}`;
     const resp = await axios.put(url, {
@@ -52,6 +56,7 @@ class App extends Component {
       bio,
       instructor_id: selectInstructor
     });
+    // console.log("response handleUp", typeof resp.data);
     const updatedStudent = resp.data.updateStudent;
     this.setState(prevState => {
       const students = prevState.students.map(student => {
@@ -152,10 +157,11 @@ class App extends Component {
       <div className="App">
         <h1>University of Bananas</h1>
         {/* TODO: create a StudentsList component that renders all students fetched from server */}
-        <Link to="/">Home</Link>
-        <Link to="/students">Students</Link>
-        <Link to="/instructors">Instructors</Link>
-
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/students">Students</Link>
+          <Link to="/instructors">Instructors</Link>
+        </nav>
         <Route
           exact
           path="/"
